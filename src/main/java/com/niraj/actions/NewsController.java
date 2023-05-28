@@ -2,6 +2,7 @@ package com.niraj.actions;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -55,6 +56,27 @@ public class NewsController {
 		return "News Type "+ type;
 	}
 
+
+	@RequestMapping(value="/site" , method= RequestMethod.GET)
+	public String getPublicationName() {
+        String siteName = "" ;
+
+		ArrayList publicationList = new ArrayList<String>();
+		publicationList.add("www.patnaInfo.com");
+		publicationList.add("www.hindustanTimes.com");
+		publicationList.add("www.khojo.online");
+		publicationList.add("www.newsdekho.in");
+		publicationList.add("www.kauwa.online");
+		publicationList.add("www.work1.com");
+		
+		
+		Random rand = new Random();
+		int upperlimit = 5;
+		int randNum = rand.nextInt(upperlimit);		
+		siteName = (String) publicationList.get(randNum);
+        
+		return siteName;
+	}
 	
 	
 }
